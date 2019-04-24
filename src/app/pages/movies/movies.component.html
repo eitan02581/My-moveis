@@ -1,0 +1,16 @@
+<div class="movies-wrapper">
+  <div class="movie-list-holder">
+    <app-movies-list [movies]="movies"></app-movies-list>
+  </div>`
+  <div *ngIf="popupTypeToShow" class="popup-holder">
+
+    <app-movie-detailes [movie]="movie" [popupTypeToShow]="popupTypeToShow" *ngIf="popupTypeToShow === 'details'">
+    </app-movie-detailes>
+
+    <app-edit-movie [movie]="movie" [popupTypeToShow]="popupTypeToShow"
+      *ngIf="popupTypeToShow === 'edit' || popupTypeToShow === 'add'">
+    </app-edit-movie>
+
+  </div>
+</div>
+<app-delete-modal></app-delete-modal>

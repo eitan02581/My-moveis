@@ -1,0 +1,15 @@
+.list-wrapper{
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  .preview-holder{
+    display: inline-block;
+  }
+  .btn-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+  }
+}
+

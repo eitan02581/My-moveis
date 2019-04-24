@@ -1,0 +1,33 @@
+<div (click)="onChangePopupType(null)" class="popup-Wrapper">
+</div>
+
+<div class="box-wrapper">
+  <button (click)="onChangePopupType(null)" class=" exit btn btn-dark">X</button>
+  <div class="details-wrapper">
+    <div class="top">
+      <div class="title-wrapper">
+        <h3>{{movie.Title  | removeSpecialChar  }} </h3>
+      </div>
+      <div class="img-wrapper">
+        <img [src]="movie.Poster" alt="">
+      </div>
+      <div class="btn-wrapper">
+        <button (click)="onChangePopupType('edit')" class=" btn btn-primary">Edit</button>
+        <button data-toggle="modal" data-target="#deleteModal" class=" btn btn-danger">Delete</button>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="main-content">
+        <h4>Year: <span class="small-txt">{{movie.Year}}</span> </h4>
+        <h4>Runtime: <span class="small-txt"> {{movie.Runtime}}</span> </h4>
+        <h4>Gener: <span class="small-txt">{{movie.Genre}}</span> </h4>
+        <h4>Director: <span class="small-txt"> {{movie.Director}}</span> </h4>
+      </div>
+    </div>
+  </div>
+  <div class="edit-wrapper">
+  </div>
+  <div class="add-wrapper">
+
+  </div>
+</div>

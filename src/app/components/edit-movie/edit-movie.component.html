@@ -1,0 +1,51 @@
+<div (click)="onChangePopupType(null)" class="popup-Wrapper">
+</div>
+<div class="box-wrapper">
+  <button (click)="onChangePopupType(null)" class=" exit btn btn-dark">X</button>
+  <div class="details-wrapper">
+    <div *ngIf="popupTypeToShow === 'edit'" class="top">
+      <div class="title-wrapper">
+        <h3>{{movie.Title}}</h3>
+      </div>
+      <div class="img-wrapper">
+        <img [src]="movie.Poster" alt="">
+      </div>
+      <div class="btn-wrapper">
+        <button data-toggle="modal" data-target="#deleteModal" class=" btn btn-danger">Delete</button>
+      </div>
+    </div>
+
+
+
+
+    <div class="bottom">
+      <h1 *ngIf="popupTypeToShow === 'add'">Add Movie</h1>
+      <div class="main-content">
+        <form [formGroup]="form" (submit)="onSaveMovie()">
+          <h4>Title</h4>
+          <p class="error" *ngIf="isTitleTaken">Title is taken</p>
+          <input (input)="isTitleTaken = false" class="form-control" formControlName="Title" placeholder="Title"
+            type="text" />
+          <h4>Poster</h4>
+          <input class="form-control" formControlName="Poster" placeholder="Poster" type="text" />
+          <h4>Year</h4>
+          <input class="form-control" formControlName="Year" placeholder="Year" type="number" />
+          <h4>Runtime </h4>
+          <input class="form-control" formControlName="Runtime" placeholder="Runtime" type="text" />
+          <h4>Genre </h4>
+          <input class="form-control" formControlName="Genre" placeholder="Genre" type="text" />
+          <h4>Director </h4>
+          <input class="form-control" formControlName="Director" placeholder="Director" type="text" />
+          <div class="btn-wrapper">
+            <button type="submit" class="btn btn-primary">Save Movie</button>
+            <button (click)="onChangePopupType(null)" class="btn btn-dark">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="edit-wrapper">
+  </div>
+  <div class="add-wrapper">
+  </div>
+</div>

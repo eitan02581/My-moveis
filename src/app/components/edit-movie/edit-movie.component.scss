@@ -1,0 +1,24 @@
+.bottom {
+    form {
+        text-align: center;
+
+        button {
+            margin-top: 10px;
+        }
+
+        .btn-wrapper {
+            text-align: center;
+
+            button:last-child {
+                margin-left: 15px;
+            }
+        }
+    }
+
+    text-align: center
+}
+
+.error {
+    text-align: left;
+    color: rgb(189, 1, 1);
+}

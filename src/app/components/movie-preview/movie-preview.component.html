@@ -1,0 +1,7 @@
+<div class="img-wrapper">
+  <img (click)="onMovie('details')" [src]="movie.Poster" alt="">
+  <div class="btn-wrapper">
+    <button (click)="onMovie('edit')" class=" btn btn-primary">Edit</button>
+    <button (click)="onDelete()" data-toggle="modal" data-target="#deleteModal" class=" btn btn-danger">Delete</button>
+  </div>
+</div>
