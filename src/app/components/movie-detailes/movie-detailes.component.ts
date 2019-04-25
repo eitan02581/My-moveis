@@ -17,9 +17,6 @@ export class MovieDetailesComponent implements OnInit {
   @Input() movie: Movie
   // removeSpecialChar: removeSpecialChar
   ngOnInit() {
-    console.log(this.movie);
-
-
   }
 
   onChangePopupType(type: string) {

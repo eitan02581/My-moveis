@@ -12,10 +12,10 @@ import Movie from 'src/app/models/movie';
 })
 export class EditMovieComponent implements OnInit {
 
-  constructor( private ngRedux: NgRedux<IAppState>) { }
+  constructor(private ngRedux: NgRedux<IAppState>) { }
   @select() isNewTitle$: Observable<boolean>
   @Input() popupTypeToShow: string
-  @Input() movie: Movie 
+  @Input() movie: any
   isErrDisp: boolean = false
   isNewTitle: boolean
   form: FormGroup;

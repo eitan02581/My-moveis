@@ -24,10 +24,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
     // get movies from apio
     this.movieService.getMovies()
     // listen to movies from store
-    this.movies$.subscribe(movies => {
-      this.movies = movies
-      console.log(movies);
-    });
+    this.movies$.subscribe(movies => this.movies = movies);
     this.movie$.subscribe(movie => this.movie = movie);
     // this.movieService.getPopupTypeSub().subscribe(type => this.popupTypeToShow = type)
     this.popupType$.subscribe(popupType => this.popupTypeToShow = popupType)
