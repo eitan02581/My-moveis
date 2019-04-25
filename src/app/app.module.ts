@@ -13,7 +13,9 @@ import { EditMovieComponent } from './components/edit-movie/edit-movie.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 import { removeSpecialChar } from './pipes/removeSpecialChar.pipe';
-// import { StoreModule } from '@ngrx/store'
+import { NgRedux, NgReduxModule } from '@angular-redux/store'
+import { rootReducer, INITIAL_STATE, IAppState } from './store/redux';
+
 
 @NgModule({
   declarations: [
@@ -32,10 +34,14 @@ import { removeSpecialChar } from './pipes/removeSpecialChar.pipe';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    // StoreModule.forRoot({movies: })
-    // HTTP_INTERCEPTORS
+    NgReduxModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>) {
+    ngRedux.configureStore(rootReducer, INITIAL_STATE)
+  }
+}

@@ -1,7 +1,7 @@
 <div (click)="onChangePopupType(null)" class="popup-Wrapper">
 </div>
 <div class="box-wrapper">
-  <button (click)="onChangePopupType(null)" class=" exit btn btn-dark">X</button>
+  <button (click)="onChangePopupType(null)" class=" exit btn btn-secondary">X</button>
   <div class="details-wrapper">
     <div *ngIf="popupTypeToShow === 'edit'" class="top">
       <div class="title-wrapper">
@@ -16,15 +16,13 @@
     </div>
 
 
-
-
     <div class="bottom">
       <h1 *ngIf="popupTypeToShow === 'add'">Add Movie</h1>
       <div class="main-content">
         <form [formGroup]="form" (submit)="onSaveMovie()">
           <h4>Title</h4>
-          <p class="error" *ngIf="isTitleTaken">Title is taken</p>
-          <input (input)="isTitleTaken = false" class="form-control" formControlName="Title" placeholder="Title"
+          <p class="error" *ngIf="!isNewTitle && isErrDisp">Title is taken</p>
+          <input (input)="isErrDisp = false" class="form-control" formControlName="Title" placeholder="Title"
             type="text" />
           <h4>Poster</h4>
           <input class="form-control" formControlName="Poster" placeholder="Poster" type="text" />

@@ -1,56 +1,87 @@
-// import { combineReducers, createStore, applyMiddleware } from 'redux';
-// console.log('ads');
+import {
+  ADD_MOVIE,
+  DELETE_MOVIE,
+  UPDATE_MOVIE,
+  SET_POPUP_TYPE,
+  SET_SELECTED_MOVIE
+} from './actions'
+import Movie from '../models/movie';
 
-// const userReducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case "CHANGE_NAME": {
-//       state = { ...state, name: action.payload }
-//       break;
-//     }
-//     case "CHANGE_AGE": {
-//       state = { ...state, age: action.payload }
-//       break;
-//     }
+export interface IAppState {
+  movies: Array<Movie>,
+  movie: Movie,
+  isNewTitle: boolean,
+  popupType: string
+}
 
-//   }
-//   return state
-// }
-// const tweetReducer = (state = [], action) => {
-//   return state
-// }
+export const INITIAL_STATE = {
+  movies: [],
+  movie: null,
+  isNewTitle: true,
+  popupType: null
+}
 
-// const reducers = combineReducers({
-//   user: userReducer,
-//   tweets: tweetReducer
-// })
 
-// // first type of middleware
-// const logger = (store) => (next) => (action) => {
-//   console.log('action fired', action);
-//   next(action)
-// }
-// const error = (store) => (next) => (action) => {
-//   try {
-//     next(action)
-//   }
-//   catch (e) {
-//     console.log('ahhhh', e);
-//   }
-//   action.type = 'CHANGE_NAME'
-//   next(action)
-// }
+export function rootReducer(state = INITIAL_STATE, action) {
+  switch (action.type) {
 
-// const middleware = applyMiddleware(logger, error)
+    case DELETE_MOVIE: {
+      state = {
+        ...state, popupType: null, movies: state.movies.filter(movie => movie.imdbID !== state.movie.imdbID)
+      }
+      break;
+    }
 
-// const store = createStore(reducers, middleware)
+    case ADD_MOVIE: {
+      // if new movie added
+      if (action.newMovie) {
+        const isNewTitle = state.movies.every(movie => movie.Title !== action.newMovie.Title)
+        // if title is taken  => not able to add
+        if (!isNewTitle) {
+          state = { ...state, isNewTitle: false }
+          break;
+        }
+        state = { ...state, movies: [...state.movies, action.newMovie], isNewTitle: true }
+      }
+      // if got movies from api
+      else if (action.movies) state = { ...state, movies: [...action.movies] }
+      break;
+    }
 
-// store.subscribe(() => {
-//   console.log('store changed', store.getState());
-// })
+    case UPDATE_MOVIE: {
+      let isTaken: boolean
+      state.movies.forEach(movie => {
+        if (movie.Title === action.updatedMovie.Title && movie.imdbID !== action.updatedMovie.imdbID) isTaken = true
+      })
+      // if title is taken  => not able to add
+      if (isTaken) {
+        state = { ...state, isNewTitle: false }
+        break;
+      }
 
-// store.dispatch({ type: 'CHANGE_NAME', payload: 'Will' })
-// store.dispatch({ type: 'CHANGE_AGE', payload: 35 })
-// store.dispatch({ type: 'CHANGE_AGE', payload: 36 })
-// store.dispatch({ type: 'E', payload: 36 })
+      const idx = state.movies.findIndex(movie => movie.imdbID === action.updatedMovie.imdbID)
+      if (idx !== -1) {
+        const movies = [...state.movies]
+        movies[idx] = action.updatedMovie
+        state = { ...state, movies, isNewTitle: true }
+      }
+      break;
+    }
 
-// export default store;
+    case SET_SELECTED_MOVIE: {
+      state = { ...state, movie: action.payload }
+      break;
+    }
+
+    case SET_POPUP_TYPE: {
+      state = { ...state, popupType: action.popupType }
+    }
+  }
+
+  return state
+}
+
+
+
+
+

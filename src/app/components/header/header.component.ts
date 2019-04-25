@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
+import { SET_POPUP_TYPE } from 'src/app/store/actions';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from 'src/app/store/redux';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +10,13 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private movieService: MovieService) { }
+  constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
   }
 
-  onAddMovie(){
-    this.movieService.setPopupType('add')
+  onAddMovie() {
+    this.ngRedux.dispatch({ type: SET_POPUP_TYPE, popupType: 'add' })
   }
 
 }

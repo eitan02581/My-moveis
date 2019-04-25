@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
+import { SET_POPUP_TYPE } from 'src/app/store/actions';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from 'src/app/store/redux';
+import Movie from 'src/app/models/movie';
 
 // import { removeSpecialChar } from '../../pipes/removeSpecialChar.pipe'
 @Component({
@@ -9,16 +12,17 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class MovieDetailesComponent implements OnInit {
 
-  constructor(private movieService: MovieService) { }
+  constructor( private ngRedux: NgRedux<IAppState>) { }
   @Input() popupTypeToShow: string
-  @Input() movie: any
+  @Input() movie: Movie
   // removeSpecialChar: removeSpecialChar
   ngOnInit() {
+    console.log(this.movie);
 
 
   }
 
   onChangePopupType(type: string) {
-    this.movieService.setPopupType(type)
+    this.ngRedux.dispatch({ type: SET_POPUP_TYPE, popupType: type })
   }
 }

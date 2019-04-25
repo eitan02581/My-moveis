@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import store from "./store/redux-async";
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +7,8 @@ import store from "./store/redux-async";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'my-movies';
+  title = 'My-movies';
   ngOnInit() {
-    console.log(store)
+    AOS.init();
   }
 }

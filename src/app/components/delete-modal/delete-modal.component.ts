@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from 'src/app/store/redux';
+import {
+  DELETE_MOVIE,
+} from '../../store/actions'
 
 @Component({
   selector: 'app-delete-modal',
@@ -8,11 +12,11 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class DeleteModalComponent implements OnInit {
 
-  constructor(private movieService:MovieService) { }
+  constructor( private ngRedux: NgRedux<IAppState>) { }
   ngOnInit() {
 
   }
-onDelete(){
-  this.movieService.deleteMovie()
-}
+  onDelete() {
+    this.ngRedux.dispatch({ type: DELETE_MOVIE, })
+  }
 }

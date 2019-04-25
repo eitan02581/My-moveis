@@ -1,0 +1,8 @@
+export const ADD_MOVIE = 'ADD_MOVIE'
+export const UPDATE_MOVIE = 'UPDATE_MOVIE'
+export const DELETE_MOVIE = 'DELETE_MOVIE'
+export const SET_POPUP_TYPE = 'SET_POPUP_TYPE'
+export const GET_MOVIES = 'GET_MOVIES'
+export const SET_SELECTED_MOVIE = 'SET_SELECTED_MOVIE'
+
+

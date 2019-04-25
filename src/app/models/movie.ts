@@ -1,19 +1,28 @@
 export default class Movie {
-  _id?: string;
-
-  constructor(public name: string = "", public email: string = "", public phone: string = "") {
-  }
-
-  public setId?() {
-    this._id = this._makeId();
-  }
-
-  private _makeId?(length = 10) {
-    let txt = ''
-    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    for (let i = 0; i < length; i++) {
-      txt += possible.charAt(Math.floor(Math.random() * possible.length))
-    }
-    return txt
-  }
+  // TODO: CHANGE IT TO CAMELCASE
+  Actors: string
+  Awards?: string
+  BoxOffice?: string
+  Country: string
+  DVD: string
+  Director?: string | Array<string>
+  Genre: string
+  Language: string
+  Metascore: string
+  Plot: string
+  Poster: string
+  Production: string
+  Rated?: string
+  Ratings?: Array<number>
+  Released?: string
+  Response?: string
+  Runtime: string
+  Title: string
+  Type: string
+  Website?: string
+  Writer?: string
+  Year: string
+  imdbID: string
+  imdbRating?: string
+  imdbVotes?: number
 }

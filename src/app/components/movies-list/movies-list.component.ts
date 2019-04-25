@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
 
 
 @Component({
@@ -16,5 +15,5 @@ export class MoviesListComponent implements OnInit {
   ngOnInit() {
 
   }
-  
+
 }

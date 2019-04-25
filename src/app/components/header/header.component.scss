@@ -1,0 +1,24 @@
+img {
+    width: 50px;
+}
+
+.navbar-brand {
+    font-size: 27px;
+    font-weight: 600;
+    transition: 0.3s;
+    color: #f44336;
+}
+
+.navbar-brand:hover {
+    color: #f44336ab
+}
+
+.navbar-brand:focus {
+
+    color: #f44336;
+}
+
+.nav-item {
+    font-weight: 500;
+    font-size: 20px;
+}

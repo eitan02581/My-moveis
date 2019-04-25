@@ -4,10 +4,12 @@ body {
 }
 
 
+
+
 .popup-Wrapper {
     height: 100%;
     width: 100%;
-    background-color: rgba(128, 128, 128, 0.205);
+    background-color: rgba(128, 128, 128, 0.486);
 }
 
 .box-holder {}
@@ -19,7 +21,7 @@ body {
     height: 600px;
     background-color: white;
     position: fixed;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow-y: scroll;
@@ -94,6 +96,12 @@ body {
 @media only screen and (max-width: 600px) {
     .btn-wrapper {
         text-align: center;
+
+    }
+
+    .box-wrapper {
+        height: 525px;
+
     }
 }
 

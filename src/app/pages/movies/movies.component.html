@@ -3,6 +3,7 @@
     <app-movies-list [movies]="movies"></app-movies-list>
   </div>`
   <div *ngIf="popupTypeToShow" class="popup-holder">
+    <div class="spinner-border text-muted"></div>
 
     <app-movie-detailes [movie]="movie" [popupTypeToShow]="popupTypeToShow" *ngIf="popupTypeToShow === 'details'">
     </app-movie-detailes>
